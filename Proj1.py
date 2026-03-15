@@ -9,6 +9,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Prop_Trans2 import Ui_PropWindow
 from Proj_Cert import Ui_ProjCert
+from styles import apply_primary_style, make_orbitron_font
 import json
 import sys
 
@@ -52,48 +53,27 @@ class Ui_ProjWindow(object):
         font.setLetterSpacing(font.AbsoluteSpacing, 5)
         font.setCapitalization(font.SmallCaps)
         self.T_Cr_But1.setFont(font)
-        self.T_Cr_But1.setStyleSheet("QPushButton { border-image: url(But1.png) 0 0 0 0 stretch stretch; color: rgb(205, 250, 255)}" "QPushButton:pressed { border-image: url(But2-2.png) 0 0 0 0 stretch stretch; color: rgb(200, 0, 5)}" "QPushButton:disabled { border-image: url(But3.png) 0 0 0 0 stretch stretch; color: rgb(50, 145, 205)}" "background-repeat: no-repeat;"  "background-position: center center;" "background-repeat: no-repeat;"  "background-position: center center;" )
         self.T_Cr_But1.setText("|CREATE|")
         self.T_Cr_But1.setIconSize(QtCore.QSize(150, 57))
-        self.T_Cr_But1.setCheckable(False)
-        self.T_Cr_But1.setAutoRepeat(False)
-        self.T_Cr_But1.setAutoExclusive(False)
-        self.T_Cr_But1.setAutoDefault(False)
-        self.T_Cr_But1.setDefault(False)
-        self.T_Cr_But1.setFlat(False)
         self.T_Cr_But1.setObjectName("T_Cr_But1")
         self.T_Cr_But1.clicked.connect(self.on_T_Cr_But1_clicked)
 
-            
         self.T_En_But1 = QtWidgets.QPushButton(self.groupBox)
         self.T_En_But1.setGeometry(QtCore.QRect(264, 57, 150, 57))
         self.T_En_But1.setFont(font)
-        self.T_En_But1.setStyleSheet("QPushButton { border-image: url(But1.png) 0 0 0 0 stretch stretch; color: rgb(205, 250, 255)}" "QPushButton:pressed { border-image: url(But2-2.png) 0 0 0 0 stretch stretch; color: rgb(200, 0, 5)}" "QPushButton:disabled { border-image: url(But3.png) 0 0 0 0 stretch stretch; color: rgb(50, 145, 205)}" "background-repeat: no-repeat;"  "background-position: center center;" "background-repeat: no-repeat;"  "background-position: center center;" )
         self.T_En_But1.setText("|ENTER|")
         self.T_En_But1.setIconSize(QtCore.QSize(150, 57))
-        self.T_En_But1.setCheckable(False)
-        self.T_En_But1.setAutoRepeat(False)
-        self.T_En_But1.setAutoExclusive(False)
-        self.T_En_But1.setAutoDefault(False)
-        self.T_En_But1.setDefault(False)
-        self.T_En_But1.setFlat(False)
-        self.T_En_But1.setObjectName("T_Ed_But1")
+        self.T_En_But1.setObjectName("T_En_But1")
         self.T_En_But1.clicked.connect(self.on_T_En_But1_clicked)
 
         self.T_Ed_But1 = QtWidgets.QPushButton(self.groupBox)
         self.T_Ed_But1.setGeometry(QtCore.QRect(471, 57, 150, 57))
         self.T_Ed_But1.setFont(font)
-        self.T_Ed_But1.setStyleSheet("QPushButton { border-image: url(But1.png) 0 0 0 0 stretch stretch; color: rgb(205, 250, 255)}" "QPushButton:pressed { border-image: url(But2-2.png) 0 0 0 0 stretch stretch; color: rgb(200, 0, 5)}" "QPushButton:disabled { border-image: url(But3.png) 0 0 0 0 stretch stretch; color: rgb(50, 145, 205)}" "background-repeat: no-repeat;"  "background-position: center center;" "background-repeat: no-repeat;"  "background-position: center center;" )
         self.T_Ed_But1.setText("|EDIT|")
         self.T_Ed_But1.setIconSize(QtCore.QSize(150, 57))
-        self.T_Ed_But1.setCheckable(False)
-        self.T_Ed_But1.setAutoRepeat(False)
-        self.T_Ed_But1.setAutoExclusive(False)
-        self.T_Ed_But1.setAutoDefault(False)
-        self.T_Ed_But1.setDefault(False)
-        self.T_Ed_But1.setFlat(False)
         self.T_Ed_But1.setObjectName("T_Ed_But1")
- #       self.T_Ed_But1.clicked.connect(self.on_T_Ed_But1_clicked)
+
+        apply_primary_style(self.T_Cr_But1, self.T_En_But1, self.T_Ed_But1)
 
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
         self.label_7.setGeometry(QtCore.QRect(310, 400, 150, 155))
@@ -136,16 +116,7 @@ class Ui_ProjWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Transaction Entry"))
-        font = QtGui.QFont()
-        #font.setFamily("Baskerville")
-        font.setFamily("orbitron")
-        font.setPointSize(14)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(25)
-        font.setLetterSpacing(font.AbsoluteSpacing, 5)
-        font.setCapitalization(font.SmallCaps)
-        self.groupBox.setFont(font)
+        self.groupBox.setFont(make_orbitron_font(size=14, spacing=5))
         self.groupBox.setTitle(_translate("MainWindow", "Project"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.actionOpen_unsubmitted_Transaction.setText(_translate("MainWindow", "Open unsubmitted Transaction"))

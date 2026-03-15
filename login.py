@@ -1,8 +1,5 @@
 from PyQt5 import QtGui, QtCore, QtWidgets
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.QtGui import QPainter, QBrush, QPen
+from PyQt5.QtGui import QPainter, QPen
 from Main1 import Ui_MainWindow
 from Prop_Trans2 import Ui_PropWindow
 from Proj1 import Ui_ProjWindow
@@ -62,8 +59,6 @@ class Login(QtWidgets.QDialog):
         # #self.Request.setAlignment(QtWidgets.AlignCenter)
         # self.Request.setAlignment(Qt.AlignCenter)
         # #self.Request.mousePressEvent = self.link_handler()
-
-        self.paintEvent(self)
 
         font = QtGui.QFont()
         #font.setFamily("Baskerville")
