@@ -376,10 +376,9 @@ class Ui_MainWindow(object):
     def on_T_Sub_But1_clicked(self):
         print('auth called')
         filename_out = 'test.txt'
-        csv_out = open(filename_out,'w') 
-        csv_out = open(filename_out,'a')
+        csv_out = open(filename_out, 'w')
         csv_out.write('Hi')
-        a2 = str(self.Trans_Tim.text)
+        a2 = str(self.Trans_Tim.text())
         csv_out.write(a2)
         #Predecessors = self.Prev_Milestones.currentText()
         #Creaters1 = self.comboBox_5.selectedItems()
@@ -394,7 +393,7 @@ class Ui_MainWindow(object):
             Endorsers1.append(item.text())
 
         #Endorsers1 = self.comboBox_4.currentText()
-        Val_Cr = [self.lineEdit_5.text]
+        Val_Cr = [self.lineEdit_5.text()]
 
         pk_pr = VerifyingKey.from_pem(open("user_public.pem").read()) # Get Project Promoter public key from their participant pem
         pk_pr = pk_pr.to_string().hex()
@@ -409,7 +408,6 @@ class Ui_MainWindow(object):
         dcent2 = {"Time of commencement": str(self.Trans_Tim.text()), "Duration": self.lineEdit_7.text(), "Time of attainment": str(self.Fin_Tim.text()), "Preceding Milestones": Predecessors,  "Planned Value Created": str(self.lineEdit_5.text()),"Cost/Price": str(self.lineEdit_6.text()),"Value Creaters": Creaters1, "Endorsers": Endorsers1}# Sorted Degree Centrality
  #       dcent2 = {"Time of attainment": str(self.Trans_Tim.text),  "Planned Value Created": str(self.lineEdit_5.text), "Preceding Milestones": Predecessors}
         json_prep = {"Time/Schedule":dcent2}
-        json_prep.keys()
         json_dump = json.dumps(json_prep, indent=1, sort_keys=True)
         filename_out2 = '5-base-trans_prop-' + str(self.lineEdit_20.text()) + '.json'
         print('fname', filename_out2)
@@ -443,13 +441,13 @@ class Ui_MainWindow(object):
         print("data %s" % json_data)
 
 
-        data = json_data + ";"
+        payload = json_data + ";"
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.connect((HOST, PORT))
-            s.sendall(data.encode())
-            data = s.recv(1024)
+            s.sendall(payload.encode())
+            response = s.recv(1024)
 
-        print('Received', repr(data))
+        print('Received', repr(response))
 
         #return json_data
 

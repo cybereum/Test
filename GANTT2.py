@@ -114,8 +114,6 @@ class Ui_GANTT(object):
         #fileName = 'gantt.csv'
         #loadCsv(self.fileName)
 
-        colors = ['#7a0504', (0.2, 0.7, 0.3), 'rgb(205, 250, 255)']
-
         fig = ff.create_gantt(df, colors=['rgb(160, 240, 255)', 'rgb(15, 45, 80)'], index_col='Complete',
                       show_colorbar=True, bar_width=0.2, showgrid_x=True, showgrid_y=True)
         #fig = ff.create_gantt(df, colors=colors, index_col='Resource',     reverse_colors=True,show_colorbar=True)
@@ -198,7 +196,6 @@ class Ui_GANTT(object):
             lines.drawLine(500,80,1000,80)
             x1 = x1 + 1
         
-        self.paintEvent(self)
     #######################Progress bars##############
 
     #######################GANTT##############
@@ -232,17 +229,6 @@ class Ui_GANTT(object):
         #self.tableView.setModel(self.model)
         #self.tableView.horizontalHeader().setStretchLastSection(True)
 
-        #target_url = "http://www.google.com")
-        #data = urllib2.urlopen(target_url) # it's a file like object and works just like a file
-        #for line in data: # files are iterable
-            #print line
-
-        #data = urllib2.urlopen("http://www.google.com").read(20000) # read only 20 000 chars
-        #data = data.split("\n") # then split it into lines
-        #for line in data:
-            #print(line)
-
-
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "GANTT"))
@@ -250,8 +236,6 @@ class Ui_GANTT(object):
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.actionOpen_unsubmitted_Transaction.setText(_translate("MainWindow", "Open unsubmitted Transaction"))
         self.actionNew_Transaction.setText(_translate("MainWindow", "New Transaction"))
-
-#from QtWebEngineWidgets.QWebEngineView import QWebEngineView
 
     def loadCsv(self, fileName):
         with open(fileName, "r") as fileInput:
@@ -279,25 +263,19 @@ class Ui_GANTT(object):
 
 
 
-    def addWidget(y):
-
-        #self.y += 1
-        y = 1
-        y1 = y*25
-
-
-        #self.widget = ExampleWidget(self.numAddWidget)
-        #self.groupBox_6.addWidget(self.widget)
+    def addWidget(self, y):
+        pass
 
 
     def paintEvent(self, event):
         painter = QPainter()
-        #painter.begin(self)
+        painter.begin(self)
         painter.setRenderHint(QPainter.Antialiasing)
         painter.setPen(QtCore.Qt.red)
         painter.setBrush(QtCore.Qt.white)
         painter.drawLine(550, 600, 1050, 600)
         painter.drawLine(550, 600, 550, 40)
+        painter.end()
 
 if __name__ == "__main__":
     import sys

@@ -6,11 +6,9 @@
 #
 # WARNING! All changes made in this file will be lost!
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QWidget, QAction, QTabWidget, QVBoxLayout, QLabel, QHBoxLayout, QVBoxLayout
-from PyQt5.QtWidgets import QMainWindow
-from PyQt5.QtWidgets import QInputDialog, QLineEdit, QFileDialog
-from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QWidget, QAction, QTabWidget, QVBoxLayout, QLabel, QHBoxLayout, QFileDialog, QInputDialog, QLineEdit
 from PyQt5.QtCore import pyqtSlot
+from styles import apply_primary_style, make_orbitron_font
 from Main1 import Ui_MainWindow
 from pyqtgraph import PlotWidget, plot
 import pyqtgraph as pg
@@ -216,8 +214,7 @@ class Ui_PropWindow(object):
         self.menuFile.addAction(self.actionNew_Transaction)
         self.menubar.addAction(self.menuFile.menuAction())
 
-#        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(MainWindow)
 
         # Create first tab
 
@@ -265,7 +262,6 @@ class Ui_PropWindow(object):
         #Set Range
         self.graphWidget.setXRange(0, 10, padding=0)
         self.graphWidget.setYRange(0, 100, padding=0)
-        self.graphWidget.showGrid(x=True, y=True)
         
 #        self.plot(time, PV, "PV", 'r')
 #        self.plot(time, EV, "EV", 'b')
@@ -282,34 +278,20 @@ class Ui_PropWindow(object):
         self.T_force1 = QtWidgets.QPushButton(self.centralwidget)
         self.T_force1.setGeometry(QtCore.QRect(50, 720, 150, 57))
         self.T_force1.setFont(font)
-        self.T_force1.setAutoFillBackground(False)
-        self.T_force1.setStyleSheet("QPushButton { border-image: url(But1.png) 0 0 0 0 stretch stretch; color: rgb(205, 250, 255)}" "QPushButton:pressed { border-image: url(But2-2.png) 0 0 0 0 stretch stretch; color: rgb(200, 0, 5)}" "QPushButton:disabled { border-image: url(But3.png) 0 0 0 0 stretch stretch; color: rgb(50, 145, 205)}" "background-repeat: no-repeat;"  "background-position: center center;" "background-repeat: no-repeat;"  "background-position: center center;" )
         self.T_force1.setText("|NETWORK|")
         self.T_force1.setIconSize(QtCore.QSize(150, 57))
-        self.T_force1.setCheckable(False)
-        self.T_force1.setAutoRepeat(False)
-        self.T_force1.setAutoExclusive(False)
-        self.T_force1.setAutoDefault(False)
-        self.T_force1.setDefault(False)
-        self.T_force1.setFlat(False)
         self.T_force1.setObjectName("T_force1")
         self.T_force1.clicked.connect(self.on_T_force1_clicked)
-        
+
         self.T_GANTT1 = QtWidgets.QPushButton(self.centralwidget)
         self.T_GANTT1.setGeometry(QtCore.QRect(250, 720, 150, 57))
         self.T_GANTT1.setFont(font)
-        self.T_GANTT1.setAutoFillBackground(False)
-        self.T_GANTT1.setStyleSheet("QPushButton { border-image: url(But1.png) 0 0 0 0 stretch stretch; color: rgb(205, 250, 255)}" "QPushButton:pressed { border-image: url(But2-2.png) 0 0 0 0 stretch stretch; color: rgb(200, 0, 5)}" "QPushButton:disabled { border-image: url(But3.png) 0 0 0 0 stretch stretch; color: rgb(50, 145, 205)}" "background-repeat: no-repeat;"  "background-position: center center;" "background-repeat: no-repeat;"  "background-position: center center;" )
         self.T_GANTT1.setText("|GANTT|")
         self.T_GANTT1.setIconSize(QtCore.QSize(150, 57))
-        self.T_GANTT1.setCheckable(False)
-        self.T_GANTT1.setAutoRepeat(False)
-        self.T_GANTT1.setAutoExclusive(False)
-        self.T_GANTT1.setAutoDefault(False)
-        self.T_GANTT1.setDefault(False)
-        self.T_GANTT1.setFlat(False)
         self.T_GANTT1.setObjectName("T_GANTT1")
         self.T_GANTT1.clicked.connect(self.on_T_GANTT1_clicked)
+
+        apply_primary_style(self.T_force1, self.T_GANTT1)
 
 
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
@@ -324,11 +306,8 @@ class Ui_PropWindow(object):
         self.label_7.setScaledContents(True)
         self.label_7.setObjectName("label_7")
         self.label_7.raise_()
-        
-        # create list of floats
-        y1 = np.linspace(0, 20, num=20)
-        # create horizontal list
-        x = np.arange(20)
+
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def plot(self, x, y, plotname, color):
         pen = pg.mkPen(color=color)
@@ -337,15 +316,7 @@ class Ui_PropWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Transaction Entry"))
-        font = QtGui.QFont()
-        #font.setFamily("Baskerville")
-        font.setFamily("orbitron")
-        font.setPointSize(14)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(25)
-        font.setLetterSpacing(font.AbsoluteSpacing, 5)
-        font.setCapitalization(font.SmallCaps)
+        font = make_orbitron_font(size=14, spacing=5)
         self.groupBox.setFont(font)
         self.groupBox.setTitle(_translate("MainWindow", "Baseline Transaction"))
         self.groupBox_2.setFont(font)
@@ -355,28 +326,18 @@ class Ui_PropWindow(object):
         self.actionNew_Transaction.setText(_translate("MainWindow", "New Transaction"))
 
     def on_T_Cr_But1_clicked(self):
-        import sys
- #       app = QtWidgets.QApplication(sys.argv)
- #       window = Window()
- #       window.show()
         self.window = Window()
         self.window.show()
 
     def on_T_force1_clicked(self):
-        import sys
- #       app = QtWidgets.QApplication(sys.argv)
- #       window = Window()
- #       window.show()
         self.window = Net2()
         self.window.show()
 
     def on_T_GANTT1_clicked(self):
-        import sys
         self.window = GANTT2()
         self.window.show()
 
     def on_T_Ed_But2_clicked(self):
-        import sys
         self.openFileNameDialog()
     def openFileNameDialog(self):
         options = QFileDialog.Options()

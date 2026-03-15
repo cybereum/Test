@@ -50,7 +50,7 @@ class Login(QtWidgets.QDialog):
         self.textPass.setGeometry(QtCore.QRect(160, 240, 150, 22))
         self.textPass.setStyleSheet("background-color: rgb(12, 30, 50);\n" 
 "color: rgb(205, 250, 255); ")
-        self.textPass.setEchoMode(QtGui.QLineEdit.Password)
+        self.textPass.setEchoMode(QtWidgets.QLineEdit.Password)
 
         # self.Request = QtWidgets.QLabel(self)
         # self.Request.setGeometry(QtCore.QRect(85, 340, 150, 20))

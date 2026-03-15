@@ -1,7 +1,5 @@
 from fbs_runtime.application_context.PyQt5 import ApplicationContext
-from PyQt5.QtWidgets import QMainWindow
 from PyQt5 import QtGui, QtCore, QtWidgets
-from fbs_runtime.application_context.PyQt5 import ApplicationContext
 from PyQt5.QtWidgets import QMainWindow
 #from PySide2 import QtXml
 #from Main1 import Ui_MainWindow
@@ -124,12 +122,8 @@ import sys
 if __name__ == '__main__':
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
     login = Login()
-#    widget=QtWidgets.QStackedWidget()
-#    widget.addWidget(login)
     login.setFixedWidth(480)
     login.setFixedHeight(620)
-    login.show()
-#    widget.show()
 
     if login.exec_() == QtWidgets.QDialog.Accepted:
         window = Window()

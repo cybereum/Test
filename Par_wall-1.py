@@ -7,7 +7,6 @@ from ecdsa import SigningKey, VerifyingKey
 from ecdsa.util import sigencode_der, sigdecode_der
 from ecdsa import BadSignatureError
 import codecs
-import datetime as date
 from ellipticcurve.ecdsa import Ecdsa
 from ellipticcurve.privateKey import PrivateKey
 from ellipticcurve.publicKey import PublicKey

@@ -123,28 +123,10 @@ class Ui_ProjWindow(object):
         self.actionNew_Transaction.setText(_translate("MainWindow", "New Transaction"))
 
     def on_T_En_But1_clicked(self):
-        import sys
- #       app = QtWidgets.QApplication(sys.argv)
- #       window = Window()
- #       window.show()
         self.window = Window()
         self.window.show()
-#        self.MainWindow.hide()
-#        self.hide()
- #       sys.exit(app.exec_())
-
-#        self.dialog.show()
-#        text, ok = QtGui.QInputDialog.getText(self, 'Input Dialog',
-#            'Enter your name:')
-        
-#        if ok:
-#            self.le.setText(str(text))
 
     def on_T_Cr_But1_clicked(self):
-        import sys
- #       app = QtWidgets.QApplication(sys.argv)
- #       window = Window()
- #       window.show()
         self.window = Window2()
         self.window.show()
 
@@ -165,13 +147,12 @@ class Window2(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
     
 if __name__ == "__main__":
-#    import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_ProjWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
- #   sys.exit(app.exec_())
+    sys.exit(app.exec_())
 
 
 
